@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 📖 Roadmap du projet
+    url: https://github.com/malo-coet/TaskFlow-Cloud/blob/main/ROADMAP.md
+    about: Consultez la roadmap 30 jours du projet TaskFlow Cloud
+  - name: 💬 Discussions
+    url: https://github.com/malo-coet/TaskFlow-Cloud/discussions
+    about: Pour les questions générales, utilisez les discussions GitHub
