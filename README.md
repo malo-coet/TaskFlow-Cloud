@@ -65,14 +65,13 @@ Le projet est conçu pour résider intégralement dans le **AWS Free Tier** pour
 
 ---
 
-## 🤖 Utilisation des outils IA (Copilot & ChatGPT)
+## 🤖 Utilisation des outils IA (Copilot)
 
 Ce projet intègre l'IA comme **levier de productivité**, pas comme substitut aux compétences.
 
 | Outil | Ce que j'ai laissé faire à l'IA | Ce que j'ai décidé moi-même |
 |-------|--------------------------------|-----------------------------|
 | **GitHub Copilot** | Génération de boilerplate Lambda, types TypeScript, tests unitaires | Architecture, modélisation DynamoDB, politiques IAM |
-| **ChatGPT** | Clarifications AWS (HTTP API vs REST API), aide à la rédaction de la doc | Règles métier, décisions de sécurité, configuration finale |
 
 *Chaque ligne de code générée a été revue, testée et validée manuellement.*
 
@@ -105,33 +104,8 @@ TaskFlow-Cloud/
 
 **Prérequis :** AWS CLI, Terraform, Node.js 20+, `gh` CLI
 
-```bash
-# 1. Cloner le repo
-git clone https://github.com/malo-coet/TaskFlow-Cloud.git
-cd TaskFlow-Cloud
-
-# 2. Déployer l'infrastructure
-cd infrastructure
-terraform init
-terraform apply
-
-# 3. Builder et déployer le frontend
-cd ../frontend
-npm install
-npm run build
-# L'URL CloudFront apparaît dans les outputs Terraform
-```
-
 ---
 
 ## 🗺️ Roadmap
 
 Voir [ROADMAP.md](ROADMAP.md) pour la roadmap complète sur 30 jours.
-
-Pour créer automatiquement toutes les issues + labels + milestones dans GitHub :
-
-```bash
-# Prérequis : gh CLI installé et authentifié (gh auth login)
-chmod +x scripts/create-issues.sh
-./scripts/create-issues.sh
-```
