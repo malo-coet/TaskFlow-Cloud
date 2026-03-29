@@ -2,7 +2,7 @@
 
 **Date:** 29 Mars 2026  
 **Statut:** ✅ Bootstrap Terminé  
-**Prochaine étape:** Semaine 2 - CRUD & Authentification  
+**Prochaine étape:** CRUD & Authentification  
 
 ---
 
@@ -26,7 +26,7 @@
 Un **squelette React minimal** (CRUD + Authentification).
 
 **Qu'est ce qui marche ? :**
-- 🌍 Page d'accueil petit bouton intéractif
+- 🌍 Page d'accueil, petit bouton intéractif
 - 🔀 Routing avec React Router (navigation sans rechargement)
 - ✨ ESLint + Prettier
 - 🎨 Tailwind CSS

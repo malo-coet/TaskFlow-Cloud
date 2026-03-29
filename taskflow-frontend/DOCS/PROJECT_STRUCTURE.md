@@ -1,9 +1,7 @@
 # 📦 Structure du Projet - TaskFlow Frontend
 
 **Date:** 29 Mars 2026  
-**Status:** ✅ Complete  
-
----
+**Status:** FAIT
 
 ## 🏗️ Arborescence complète
 
@@ -15,7 +13,7 @@ TaskFlow/
 ├── docs/
 │   └── dynamodb-schema.md         ← Schéma DynamoDB
 │
-├── infra/                         ← Infrastructure as Code (Semaine 3)
+├── infra/                         ← Infrastructure as Code
 │   ├── provider.tf
 │   ├── s3.tf
 │   └── terraform.tfstate
@@ -23,7 +21,7 @@ TaskFlow/
 ├── scripts/
 │   └── create-issues.sh           ← Script création GitHub issues
 │
-└── taskflow-frontend/             ← 🎯 NOTRE FOCUS
+└── taskflow-frontend/
     ├── 📄 package.json            ✅ Dependencies + scripts
     ├── 📄 vite.config.ts          ✅ Vite config
     ├── 📄 tsconfig.json           ✅ TypeScript config
@@ -70,7 +68,7 @@ TaskFlow/
     │   │   ├── react.svg
     │   │   └── vite.svg
     │   │
-    │   └── 📁 types/              (À créer Semaine 2)
+    │   └── 📁 types/              (À faire)
     │       └── (Task.ts, User.ts, etc.)
     │
     └── 📁 dist/                   (Build output - production)
