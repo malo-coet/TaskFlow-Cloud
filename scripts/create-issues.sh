@@ -79,7 +79,7 @@ create_milestone() {
     -f title="${title}" \
     -f due_on="${due}T23:59:59Z" \
     -f description="${description}" \
-    --silent 2>/dev/null && echo "  ✓ ${title}" || echo "  ⚠ ${title} (déjà existant ou erreur)"
+    2>/dev/null && echo "  ✓ ${title}" || echo "  ⚠ ${title} (déjà existant ou erreur)"
 }
 
 create_milestone "Semaine 1 — Setup & Squelette"         "${MS1_DUE}" "Frontend minimal + backend hello world déployé"
@@ -107,7 +107,7 @@ gh issue create \
   --repo "${REPO}" \
   --title "[S1-J1/J2] Setup initial — Compte AWS, CLI, MFA, repo GitHub" \
   --label "semaine-1,infrastructure,documentation" \
-  --milestone "${MS1}" \
+  --milestone "Semaine 1 — Setup & Squelette" \
   --body "## 📋 Description
 Configuration initiale de l'environnement de développement et du compte AWS.
 
@@ -125,13 +125,13 @@ Configuration initiale de l'environnement de développement et du compte AWS.
 
 ## 🤖 IA
 Copilot : génération de scripts de configuration. ChatGPT : clarification des bonnes pratiques IAM initiales." \
-  --silent && echo "  ✓ [S1] Setup initial" || echo "  ⚠ [S1] Setup initial (erreur)"
+  && echo "  ✓ [S1] Setup initial" || echo "  ⚠ [S1] Setup initial (erreur)"
 
 gh issue create \
   --repo "${REPO}" \
   --title "[S1-J3/J4] Bootstrap SPA React/Vite — Page Hello TaskFlow" \
   --label "semaine-1,frontend" \
-  --milestone "${MS1}" \
+  --milestone "Semaine 1 — Setup & Squelette" \
   --body "## 📋 Description
 Créer le squelette de l'application frontend SPA avec React et Vite.
 
@@ -149,13 +149,13 @@ Créer le squelette de l'application frontend SPA avec React et Vite.
 
 ## 🤖 IA
 Copilot : génération du squelette des composants React (Layout, TaskList, TaskCard). Revue manuelle de chaque composant généré." \
-  --silent && echo "  ✓ [S1] Bootstrap SPA" || echo "  ⚠ [S1] Bootstrap SPA (erreur)"
+  && echo "  ✓ [S1] Bootstrap SPA" || echo "  ⚠ [S1] Bootstrap SPA (erreur)"
 
 gh issue create \
   --repo "${REPO}" \
   --title "[S1-J5/J7] Lambda health-check + API Gateway HTTP API + Schéma DynamoDB" \
   --label "semaine-1,backend,infrastructure" \
-  --milestone "${MS1}" \
+  --milestone "Semaine 1 — Setup & Squelette" \
   --body "## 📋 Description
 Première Lambda déployée, connectée à un API Gateway HTTP API. Définition du schéma DynamoDB.
 
@@ -174,7 +174,7 @@ Première Lambda déployée, connectée à un API Gateway HTTP API. Définition 
 
 ## 🤖 IA
 Copilot : génération du handler Lambda et du schéma DynamoDB initial. Décision finale sur la modélisation des données : revue manuelle." \
-  --silent && echo "  ✓ [S1] Lambda + API GW + DynamoDB schema" || echo "  ⚠ [S1] Lambda + API GW (erreur)"
+  && echo "  ✓ [S1] Lambda + API GW + DynamoDB schema" || echo "  ⚠ [S1] Lambda + API GW (erreur)"
 
 echo ""
 
@@ -189,7 +189,7 @@ gh issue create \
   --repo "${REPO}" \
   --title "[S2-J8/J9] DynamoDB Tasks + Lambda CRUD (createTask, listTasks, updateTask, deleteTask)" \
   --label "semaine-2,backend" \
-  --milestone "${MS2}" \
+  --milestone "Semaine 2 — CRUD & Auth" \
   --body "## 📋 Description
 Implémentation complète du CRUD sur les tâches via Lambda + DynamoDB.
 
@@ -209,13 +209,13 @@ Implémentation complète du CRUD sur les tâches via Lambda + DynamoDB.
 
 ## 🤖 IA
 Copilot : génération des handlers et des types TypeScript. Revue manuelle des requêtes DynamoDB (PK/SK, conditions d'appartenance par userId)." \
-  --silent && echo "  ✓ [S2] DynamoDB CRUD" || echo "  ⚠ [S2] DynamoDB CRUD (erreur)"
+  && echo "  ✓ [S2] DynamoDB CRUD" || echo "  ⚠ [S2] DynamoDB CRUD (erreur)"
 
 gh issue create \
   --repo "${REPO}" \
   --title "[S2-J10/J11] Cognito User Pool + Authorizer JWT sur API Gateway" \
   --label "semaine-2,auth,backend,securite" \
-  --milestone "${MS2}" \
+  --milestone "Semaine 2 — CRUD & Auth" \
   --body "## 📋 Description
 Mise en place de l'authentification avec AWS Cognito et protection de toutes les routes API.
 
@@ -239,13 +239,13 @@ Mise en place de l'authentification avec AWS Cognito et protection de toutes les
 
 ## 🤖 IA
 Copilot : génération des hooks React pour l'auth. Architecture auth (choix du storage des tokens) : décision manuelle après revue des bonnes pratiques OWASP." \
-  --silent && echo "  ✓ [S2] Cognito + JWT" || echo "  ⚠ [S2] Cognito + JWT (erreur)"
+  && echo "  ✓ [S2] Cognito + JWT" || echo "  ⚠ [S2] Cognito + JWT (erreur)"
 
 gh issue create \
   --repo "${REPO}" \
   --title "[S2-J12/J14] Intégration CRUD frontend + tests unitaires Lambda" \
   --label "semaine-2,frontend,backend" \
-  --milestone "${MS2}" \
+  --milestone "Semaine 2 — CRUD & Auth" \
   --body "## 📋 Description
 Relier le frontend au backend CRUD, ajouter des tests unitaires et documenter l'auth.
 
@@ -268,7 +268,7 @@ Relier le frontend au backend CRUD, ajouter des tests unitaires et documenter l'
 
 ## 🤖 IA
 Copilot : génération des cas de tests. Règles métier (qui peut voir/modifier les tâches des autres) : décision manuelle." \
-  --silent && echo "  ✓ [S2] Intégration CRUD + tests" || echo "  ⚠ [S2] Intégration CRUD (erreur)"
+  && echo "  ✓ [S2] Intégration CRUD + tests" || echo "  ⚠ [S2] Intégration CRUD (erreur)"
 
 echo ""
 
@@ -283,7 +283,7 @@ gh issue create \
   --repo "${REPO}" \
   --title "[S3-J15/J17] Infrastructure as Code — Terraform/SAM (S3, CloudFront, Lambda, API GW, DynamoDB, Cognito)" \
   --label "semaine-3,infrastructure" \
-  --milestone "${MS3}" \
+  --milestone "Semaine 3 — IaC, CI/CD, Observabilité" \
   --body "## 📋 Description
 Décrire toute l'infrastructure AWS en code Terraform ou AWS SAM.
 
@@ -304,13 +304,13 @@ Décrire toute l'infrastructure AWS en code Terraform ou AWS SAM.
 
 ## 🤖 IA
 Copilot : génération des blocs de ressources Terraform. Revue manuelle de chaque bloc pour les politiques IAM (permissions minimales) et les configurations de sécurité S3/CloudFront." \
-  --silent && echo "  ✓ [S3] IaC Terraform/SAM" || echo "  ⚠ [S3] IaC Terraform/SAM (erreur)"
+  && echo "  ✓ [S3] IaC Terraform/SAM" || echo "  ⚠ [S3] IaC Terraform/SAM (erreur)"
 
 gh issue create \
   --repo "${REPO}" \
   --title "[S3-J18/J19] Pipeline CI/CD GitHub Actions — build, test, deploy" \
   --label "semaine-3,ci-cd,infrastructure" \
-  --milestone "${MS3}" \
+  --milestone "Semaine 3 — IaC, CI/CD, Observabilité" \
   --body "## 📋 Description
 Automatiser le build, les tests et le déploiement via GitHub Actions.
 
@@ -334,13 +334,13 @@ Automatiser le build, les tests et le déploiement via GitHub Actions.
 
 ## 🤖 IA
 Copilot : génération du fichier workflow YAML. Revue manuelle des permissions IAM OIDC (scope minimal)." \
-  --silent && echo "  ✓ [S3] CI/CD GitHub Actions" || echo "  ⚠ [S3] CI/CD GitHub Actions (erreur)"
+  && echo "  ✓ [S3] CI/CD GitHub Actions" || echo "  ⚠ [S3] CI/CD GitHub Actions (erreur)"
 
 gh issue create \
   --repo "${REPO}" \
   --title "[S3-J20/J21] CloudWatch Logs + Métriques + Throttling API Gateway" \
   --label "semaine-3,observabilite,securite" \
-  --milestone "${MS3}" \
+  --milestone "Semaine 3 — IaC, CI/CD, Observabilité" \
   --body "## 📋 Description
 Configurer l'observabilité avec CloudWatch et sécuriser l'API Gateway avec du throttling.
 
@@ -359,7 +359,7 @@ Configurer l'observabilité avec CloudWatch et sécuriser l'API Gateway avec du 
 
 ## 🤖 IA
 ChatGPT : aide à la définition des seuils d'alarme pertinents. Configuration finale des quotas : décision manuelle selon les besoins du projet." \
-  --silent && echo "  ✓ [S3] CloudWatch + Throttling" || echo "  ⚠ [S3] CloudWatch + Throttling (erreur)"
+  && echo "  ✓ [S3] CloudWatch + Throttling" || echo "  ⚠ [S3] CloudWatch + Throttling (erreur)"
 
 echo ""
 
@@ -374,7 +374,7 @@ gh issue create \
   --repo "${REPO}" \
   --title "[S4-J22/J23] Schéma d'architecture — diagramme Excalidraw/draw.io" \
   --label "semaine-4,documentation" \
-  --milestone "${MS4}" \
+  --milestone "Semaine 4 — Finition & Pitch" \
   --body "## 📋 Description
 Créer un diagramme d'architecture clair et professionnel pour le README.
 
@@ -396,13 +396,13 @@ Créer un diagramme d'architecture clair et professionnel pour le README.
 
 ## 🤖 IA
 ChatGPT : suggestions sur les éléments à inclure dans le diagramme. Dessin final : manuel." \
-  --silent && echo "  ✓ [S4] Schéma architecture" || echo "  ⚠ [S4] Schéma architecture (erreur)"
+  && echo "  ✓ [S4] Schéma architecture" || echo "  ⚠ [S4] Schéma architecture (erreur)"
 
 gh issue create \
   --repo "${REPO}" \
   --title "[S4-J24/J25] README niveau professionnel" \
   --label "semaine-4,documentation" \
-  --milestone "${MS4}" \
+  --milestone "Semaine 4 — Finition & Pitch" \
   --body "## 📋 Description
 Rédiger un README complet, clair et recruiter-friendly.
 
@@ -420,13 +420,13 @@ Rédiger un README complet, clair et recruiter-friendly.
 
 ## 🤖 IA
 Copilot : suggestions de formulations. Contenu final (architecture, décisions) : rédigé et validé manuellement." \
-  --silent && echo "  ✓ [S4] README pro" || echo "  ⚠ [S4] README pro (erreur)"
+  && echo "  ✓ [S4] README pro" || echo "  ⚠ [S4] README pro (erreur)"
 
 gh issue create \
   --repo "${REPO}" \
   --title "[S4-J26/J27] Captures d'écran de l'application" \
   --label "semaine-4,documentation,frontend" \
-  --milestone "${MS4}" \
+  --milestone "Semaine 4 — Finition & Pitch" \
   --body "## 📋 Description
 Ajouter des captures d'écran de l'application pour montrer l'UX et les fonctionnalités clés.
 
@@ -443,13 +443,13 @@ Ajouter des captures d'écran de l'application pour montrer l'UX et les fonction
 - macOS : Cmd+Shift+4 pour capture de zone
 - Windows : Win+Shift+S
 - [CleanShot X](https://cleanshot.com/) pour des captures annotées (optionnel)" \
-  --silent && echo "  ✓ [S4] Screenshots" || echo "  ⚠ [S4] Screenshots (erreur)"
+  && echo "  ✓ [S4] Screenshots" || echo "  ⚠ [S4] Screenshots (erreur)"
 
 gh issue create \
   --repo "${REPO}" \
   --title "[S4-J28/J29] Script de déploiement + documentation How to Run" \
   --label "semaine-4,documentation,infrastructure,ci-cd" \
-  --milestone "${MS4}" \
+  --milestone "Semaine 4 — Finition & Pitch" \
   --body "## 📋 Description
 Documenter et automatiser le déploiement pour qu'un développeur externe puisse tout lancer facilement.
 
@@ -466,13 +466,13 @@ Documenter et automatiser le déploiement pour qu'un développeur externe puisse
 
 ## 🤖 IA
 Copilot : génération du script deploy.sh. Revue manuelle pour la gestion des erreurs et des pré-requis." \
-  --silent && echo "  ✓ [S4] Deploy script + How to Run" || echo "  ⚠ [S4] Deploy script (erreur)"
+  && echo "  ✓ [S4] Deploy script + How to Run" || echo "  ⚠ [S4] Deploy script (erreur)"
 
 gh issue create \
   --repo "${REPO}" \
   --title "[S4-J30] Nettoyage final + préparation du pitch" \
   --label "semaine-4,documentation" \
-  --milestone "${MS4}" \
+  --milestone "Semaine 4 — Finition & Pitch" \
   --body "## 📋 Description
 Vérification finale que tout fonctionne et préparation du pitch pour les recruteurs.
 
@@ -490,7 +490,7 @@ Vérification finale que tout fonctionne et préparation du pitch pour les recru
 - [ ] L'URL CloudFront est accessible en HTTPS
 - [ ] Un utilisateur peut s'inscrire, se connecter, créer/modifier/supprimer des tâches
 - [ ] Les logs CloudWatch montrent les requêtes en temps réel" \
-  --silent && echo "  ✓ [S4] Nettoyage + Pitch" || echo "  ⚠ [S4] Nettoyage + Pitch (erreur)"
+  && echo "  ✓ [S4] Nettoyage + Pitch" || echo "  ⚠ [S4] Nettoyage + Pitch (erreur)"
 
 echo ""
 echo "✅ Terminé ! Vérifiez les issues créées sur :"
