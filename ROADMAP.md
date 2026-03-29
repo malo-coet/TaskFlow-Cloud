@@ -24,11 +24,11 @@ Semaine 4  →  Finition "recruiter-friendly" + Pitch
 
 ### J1–J2 · Setup initial
 
-- [ ] Créer le compte AWS et activer MFA
-- [ ] Installer et configurer AWS CLI (`aws configure`)
-- [ ] Installer Terraform (ou AWS SAM CLI)
-- [ ] Vérifier que le repo GitHub est créé et GitHub Copilot activé
-- [ ] Créer les labels et milestones GitHub via `scripts/create-issues.sh`
+- [x] Créer le compte AWS et activer MFA
+- [x] Installer et configurer AWS CLI (`aws configure`)
+- [x] Installer Terraform (ou AWS SAM CLI)
+- [x] Vérifier que le repo GitHub est créé et GitHub Copilot activé
+- [x] Créer les labels et milestones GitHub via `scripts/create-issues.sh`
 
 > **Outils suggérés :**
 > - [AWS CLI v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
