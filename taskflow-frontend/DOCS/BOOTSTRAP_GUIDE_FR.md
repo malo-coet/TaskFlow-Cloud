@@ -21,16 +21,16 @@
 
 ## Résumé exécutif
 
-### ✅ Qu'avons-nous construit ?
+### Qu'est ce qui à été réalisé :
 
-Un **squelette React minimal et professionnel** prêt pour la Semaine 2 (CRUD + Authentification).
+Un **squelette React minimal** (CRUD + Authentification).
 
-**Ce qui fonctionne :**
-- 🌍 Page d'accueil ("Hello TaskFlow") avec démo interactive
+**Qu'est ce qui marche ? :**
+- 🌍 Page d'accueil petit bouton intéractif
 - 🔀 Routing avec React Router (navigation sans rechargement)
-- ✨ ESLint + Prettier (code formaté automatiquement)
-- 🎨 Tailwind CSS (UI moderne et responsive)
-- 🔒 TypeScript strict (erreurs détectées avant la compilation)
+- ✨ ESLint + Prettier
+- 🎨 Tailwind CSS
+- 🔒 TypeScript strict
 - 🧪 Build optimisé (234 KB JS, 74 KB gzippé)
 
 **Zéro vulnérabilité :** 351 packages audités, 0 CVE trouvée ✅
@@ -42,7 +42,7 @@ Un **squelette React minimal et professionnel** prêt pour la Semaine 2 (CRUD + 
 ### 1️⃣ Configuration des dépendances
 
 **Pourquoi ?**  
-Vue que Vite était déjà là avec React Router, il fallait ajouter les outils de qualité du code (Prettier, eslint-plugin-react).
+Comme Vite était déjà là avec React Router, il fallait ajouter les outils (Prettier, eslint-plugin-react).
 
 **Fichier modifié :** `package.json`
 
@@ -81,17 +81,6 @@ Le fichier ESLint par défaut était minimaliste. Il fallait ajouter React-speci
 
 **Améliorations clés :**
 
-#### Avant (par défaut)
-```javascript
-extends: [
-  js.configs.recommended,
-  tseslint.configs.recommended,
-  reactHooks.configs.flat.recommended,
-  reactRefresh.configs.vite,
-]
-```
-
-#### Après (amélioré)
 ```javascript
 extends: [
   js.configs.recommended,
@@ -105,13 +94,13 @@ extends: [
 rules: {
   'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
   '@typescript-eslint/no-unused-vars': ['warn', {
-    argsIgnorePattern: '^_',              // ← Permet _unused = ...
+    argsIgnorePattern: '^_',              // ← Permet le "_unused = ..."
     varsIgnorePattern: '^_',
   }],
 }
 ```
 
-**Exemple :** Si vous écrivez du code non-conformiste, ESLint vous le signale :
+**Exemple :** Si le code est non-conforme, ESLint le signal :
 
 ```typescript
 // ❌ Non-conforme : variable inutilisée
@@ -127,7 +116,7 @@ export function Component() {
 }
 ```
 
-**Benefit:** Moins de warnings ESLint = code plus propre.
+**Benefices ? :** code plus propre.
 
 ---
 
@@ -216,12 +205,12 @@ Renders <Layout />
 Result: Header + HomePage + Footer
 ```
 
-**Ajout de routes future (Semaine 2) :**
+**Ajout de routes future (Prochain steps) :**
 ```typescript
 <Route element={<Layout />}>
   <Route index element={<HomePage />} />
-  <Route path="tasks" element={<TaskListPage />} />      // Semaine 2
-  <Route path="login" element={<LoginPage />} />          // Semaine 2
+  <Route path="tasks" element={<TaskListPage />} />      // Next time
+  <Route path="login" element={<LoginPage />} />          // Next time
   <Route path="*" element={<NotFoundPage />} />
 </Route>
 ```
@@ -240,7 +229,7 @@ export default function Layout() {
     <div className="app-container">
       <Header />
       <main className="app-content">
-        <Outlet />  {/* ← Les pages s'affichent ici */}
+        <Outlet />  {/* ← Les pages s'affichent juste là */}
       </main>
       <Footer />
     </div>
@@ -253,17 +242,17 @@ export default function Layout() {
 .app-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;  /* Hauteur min = écran complet */
+  min-height: 100vh;
 }
 
 .app-content {
-  flex: 1;  /* Grandit pour repousser le footer */
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
 ```
 
-**Bénéfice :** Le footer reste en bas même si la page est courte. ⬇️
+**Bénéfices ? :** Le footer reste en bas même si la page est courte.
 
 #### **Header (`src/components/Header.tsx`)**
 
@@ -292,13 +281,13 @@ export default function Header() {
 **Points clés :**
 - `<Link to="/">` = React Router navigation (pas de rechargement)
 - Tailwind classes : `bg-white shadow` = fond blanc avec ombre
-- Responsive : `px-4 sm:px-6 lg:px-8` = padding qui augmente sur les grands écrans
+- Responsive : `px-4 sm:px-6 lg:px-8` = padding qui augmente sur les grands écrans (révisions possibles... Pas très beau)
 
 #### **Footer (`src/components/Footer.tsx`)**
 
 ```typescript
 export default function Footer() {
-  const currentYear = new Date().getFullYear()  // 2026
+  const currentYear = new Date().getFullYear()
   return (
     <footer className="bg-gray-800 text-white mt-12">
       <div className="...">
@@ -309,25 +298,23 @@ export default function Footer() {
 }
 ```
 
-**Bénéfice :** L'année se met à jour automatiquement chaque 1er janvier ! 📅
-
 ---
 
 ### 6️⃣ Pages (Page Components)
 
 #### **HomePage (`src/pages/HomePage.tsx`)**
 
-**Rôle :** Page d'accueil avec démo interactive.
+**Rôle :** Page d'accueile.
 
 ```typescript
 export default function HomePage() {
-  const [count, setCount] = useState(0)  // React state
+  const [count, setCount] = useState(0)
   
   return (
     <div className="...">
       <h1>Welcome to TaskFlow</h1>
       
-      {/* Counter Demo */}
+      {}
       <p className="text-6xl font-bold">{count}</p>
       <button onClick={() => setCount(count + 1)}>Increase</button>
       <button onClick={() => setCount(count - 1)}>Decrease</button>
@@ -372,24 +359,22 @@ URL : `http://localhost:5173/unknown`
 #### **Global Styles (`src/index.css`)**
 
 ```css
-@tailwind base;       /* Reset CSS */
-@tailwind components; /* Pre-made components */
 @tailwind utilities;  /* Utility classes */
 
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Padding incluse dans la taille */
+  box-sizing: border-box;
 }
 
 html, body, #root {
   height: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, /* System fonts */
-  -webkit-font-smoothing: antialiased; /* Meilleur rendu du texte */
+  font-family: -apple-system, BlinkMacSystemFont,
+  -webkit-font-smoothing: antialiased; /* Meilleur rendu de texte */
 }
 
 body {
-  background-color: #f9fafb; /* Gris très clair */
+  background-color: #f9fafb;
 }
 ```
 
@@ -405,11 +390,11 @@ body {
 .app-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Au moins la hauteur de l'écran */
+  min-height: 100vh;
 }
 
 .app-content {
-  flex: 1; /* Grandit pour remplir l'espace disponible */
+  flex: 1;
 }
 
 @keyframes fadeIn {
@@ -420,20 +405,6 @@ body {
 .fade-in {
   animation: fadeIn 0.3s ease-in-out;
 }
-```
-
-**Résultat visuel :**
-```
-┌─────────────────────────┐
-│       Header            │
-├─────────────────────────┤
-│                         │
-│      Page Content       │
-│     (flex: 1)           │ ← Grandit pour remplir
-│                         │
-├─────────────────────────┤
-│       Footer            │
-└─────────────────────────┘
 ```
 
 ---
@@ -460,20 +431,20 @@ body {
 7. Utilisateur voit la nouvelle page sans rechargement ⚡
 ```
 
-### État (State) vs Props
+### States vs Props
 
-**État (State)** = données qui changent dans le composant
+**States** = données qui changent dans le composant
 ```typescript
 const [count, setCount] = useState(0)  // État local
 ```
 
 **Props** = données passées du parent au enfant
 ```typescript
-<Header title="My App" />  // Props: { title: "My App" }
+<Header title="My App" />
 ```
 
 **Pour Semaine 2 (CRUD) :**
-- État : tasks list, loading, error
+- States : tasks list, loading, error
 - Props : taskId, onDelete (callback)
 - Context (futur) : user authentifié, theme dark/light
 
@@ -489,30 +460,6 @@ npm run format  # Format le code
 npm run lint    # Fix ESLint violations
 npm run type-check # Check TypeScript
 ```
-
-#### **Résultat dans Git :**
-```bash
-git diff
-# Voir uniquement les changements fonctionnels, pas de formatage
-```
-
-### Intégration VSCode (optionnel)
-
-Créer `.vscode/settings.json` :
-```json
-{
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
-  }
-}
-```
-
-Avec ça, chaque sauvegarde (Cmd+S) :
-1. Formate avec Prettier
-2. Fixe les violations ESLint
-
 ---
 
 ## Comprendre React Router
@@ -574,7 +521,7 @@ src/
 
 - **< 200 lignes** : Composant simple (Header, Footer, Button)
 - **200-500 lignes** : Composant moyen (HomePage, TaskCard)
-- **> 500 lignes** : Découper en sous-composants ⬆️
+- **> 500 lignes** : Découper en sous-composants
 
 ---
 
@@ -584,7 +531,7 @@ src/
 
 ```bash
 npm audit
-# Output: 0 vulnerabilities found ✅
+# Output: 0 vulnerabilities found
 ```
 
 ### Packages critiqués
@@ -637,7 +584,7 @@ npx eslint --watch src/
 
 ---
 
-## 📋 Checklist pour la Semaine 2
+## 📋 Checklist pour prochianes étapes
 
 - [ ] Implémenter les pages Login/Signup
 - [ ] Intégrer Cognito (authentification)
@@ -660,18 +607,17 @@ npx eslint --watch src/
 
 ---
 
-## 📞 Questions fréquentes
+## Questions réccurrentes à savoir !
 
 ### Q: Pourquoi React Router et pas Next.js ?
 A: React Router est plus léger et suffisant pour une SPA frontend. Next.js = utile si on besoin du server-side rendering.
 
-### Q: Comment ajouter une nouvelle page ?
-A:
+### Q: Comment on ajoute une nouvelle page ?
 1. Créer `src/pages/MyPage.tsx`
 2. Importer dans `App.tsx`
 3. Ajouter `<Route path="mypage" element={<MyPage />} />`
 
-### Q: ESLint me dit "Missing dependencies" sur un hook. C'est quoi ?
+### Q: "Missing dependencies" sur un hook. C'est quoi ?
 A: React hooks (useState, useEffect) ont des dépendances à déclarer. ESLint empêche les bugs en vous le rappelant.
 
 ```typescript
@@ -690,13 +636,10 @@ useEffect(() => {
 A:
 ```bash
 npm run dev
-# Ouvre http://localhost:5173
-# Les changements se rechargent automatiquement (HMR)
 ```
 
 ---
 
-**Généré le :** 29 Mars 2026  
-**Statut :** ✅ Bootstrap Complet  
-**Prochaine étape :** Semaine 2 - CRUD & Authentification Cognito
+**Statut :** Bootstrap Complet  
+**Prochaine étape :** CRUD & Authentification Cognito
 
