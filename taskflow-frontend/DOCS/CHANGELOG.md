@@ -274,12 +274,8 @@ npm run preview   # Preview production build locally
 
 ---
 
-## 🔮 Next Steps (Semaine 2)
-
-1. **Lambda Integration** - Call backend /health endpoint
-2. **Cognito Auth** - Implement login/signup pages
-3. **CRUD UI** - Task list, create, edit, delete forms
-4. **API Integration** - Fetch tasks from DynamoDB via Lambda
+## 🔮 Next Steps
+### See NEXT_STEPS.md for more details!
 
 ---
 
@@ -293,7 +289,7 @@ For issues or questions:
 
 ---
 
-**Generated:** 2026-03-29  
+**Date:** 2026-03-29  
 **Version:** v0.1.0  
 **Status:** ✅ Production Ready
 
