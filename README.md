@@ -1,6 +1,5 @@
-# 🚀 TaskFlow Cloud — Gestionnaire de Tâches Serverless
+# TaskFlow Cloud — Gestionnaire de Tâches Serverless
 
-[![CI/CD](https://github.com/malo-coet/TaskFlow-Cloud/actions/workflows/deploy.yml/badge.svg)](https://github.com/malo-coet/TaskFlow-Cloud/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Node.js 20](https://img.shields.io/badge/Node.js-20.x-green.svg)](https://nodejs.org/)
 
@@ -39,7 +38,7 @@ User ──► CloudFront ──► S3 (SPA React/Vite)
 
 ---
 
-## 💰 Optimisation FinOps
+## Optimisation FinOps
 Le projet est conçu pour résider intégralement dans le **AWS Free Tier** pour un usage de type portfolio (< 1€/mois pour le nom de domaine).
 | Service | Usage | Coût |
 | :--- | :--- | :--- |
@@ -48,7 +47,7 @@ Le projet est conçu pour résider intégralement dans le **AWS Free Tier** pour
 
 ---
 
-## 🤖 Utilisation de l'IA (Copilot & ChatGPT)
+## Utilisation de l'IA (Copilot & ChatGPT)
 Ce projet intègre l'IA comme levier de productivité :
 - **GitHub Copilot** : Génération de boilerplate et tests unitaires.
 - **ChatGPT** : Aide à la conception de l'architecture et résolution de bugs complexes.
