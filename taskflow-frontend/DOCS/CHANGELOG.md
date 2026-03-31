@@ -1,5 +1,59 @@
 # 📝 CHANGELOG - TaskFlow Frontend Bootstrap
 
+## [v0.1.1] - 2026-03-31 - Documentation Cleanup & Roadmap Integration
+
+### 🎯 Updates
+Documentation cleanup and preparation for J5-J7 (Lambda Hello World + API Gateway).
+
+### 📦 Changes
+
+#### **Documentation Improvements**
+- ✅ **README.md** - Completely rewritten for clarity
+  - Clear status indicators (Phase 1 ✅ / Phase 2 ⏳)
+  - Quick start section (30 seconds to first run)
+  - Essential commands highlighted
+  - Removed redundant information
+  - Points to specialized docs for deeper dives
+
+- ✅ **DOCS/NEXT_STEPS.md** - NEW
+  - Complete roadmap for J5-J7
+  - Step-by-step Lambda deployment guide
+  - API Gateway configuration instructions
+  - Frontend integration patterns
+  - DynamoDB schema definition
+  - Detailed checklist
+
+- ✅ **DOCS/PROJECT_STRUCTURE.md** - File location index updated
+  - Updated to match actual file structure
+  - Clear documentation hierarchy
+
+#### **File Location Reference**
+```
+taskflow-frontend/
+├── README.md                ← START HERE (5 min)
+├── DOCS/
+│   ├── BOOTSTRAP_GUIDE_FR.md    ← Deep dive (30 min)
+│   ├── CHANGELOG.md             ← Technical details (15 min)
+│   ├── PROJECT_STRUCTURE.md     ← Architecture (10 min)
+│   └── NEXT_STEPS.md            ← J5-J7 Roadmap (20 min)
+```
+
+### 🔄 Reasoning
+
+**Why cleanup?**
+- Previous documentation had overlapping content
+- Readers didn't know where to start
+- Too much information in one place
+
+**New structure:**
+- **README.md** = Executive summary (entry point)
+- **BOOTSTRAP_GUIDE_FR.md** = Deep technical guide
+- **CHANGELOG.md** = Technical reference (implementation details)
+- **PROJECT_STRUCTURE.md** = File organization
+- **NEXT_STEPS.md** = Action roadmap for J5-J7
+
+---
+
 ## [v0.1.0] - 2026-03-29 - Frontend Bootstrap Complete
 
 ### 🎯 Objective Achieved

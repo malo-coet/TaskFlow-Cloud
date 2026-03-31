@@ -37,10 +37,10 @@ Semaine 4  →  Finition "recruiter-friendly" + Pitch
 
 ### J3–J4 · Bootstrap Frontend
 
-- [ ] Bootstraper la SPA React/Vite (`npm create vite@latest frontend -- --template react-ts`)
-- [ ] Créer une page "Hello TaskFlow" avec routing basique (React Router)
-- [ ] Configurer ESLint + Prettier
-- [ ] Utiliser Copilot pour générer le squelette des composants React principaux
+- [x] Bootstraper la SPA React/Vite (`npm create vite@latest frontend -- --template react-ts`)
+- [x] Créer une page "Hello TaskFlow" avec routing basique (React Router)
+- [x] Configurer ESLint + Prettier
+- [x] Utiliser Copilot pour générer le squelette des composants React principaux
 
 > **Outils suggérés :**
 > - [Vite](https://vitejs.dev/) + [React](https://react.dev/)
