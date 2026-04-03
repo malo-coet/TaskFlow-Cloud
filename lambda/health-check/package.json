@@ -1,0 +1,11 @@
+{
+  "name": "health-check-lambda",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "handler.js",
+  "scripts": {
+    "test": "node --test handler.test.js"
+  },
+  "dependencies": {}
+}
+

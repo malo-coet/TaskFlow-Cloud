@@ -1,19 +1,39 @@
 # 📋 TODO - Prochaines étapes TaskFlow
 
-**Date:** 29 Mars 2026  
-**Phase actuelle:** Semaine 1 (Bootstrap Frontend) ✅ TERMINÉE  
-**Prochaine phase:** Semaine 2 (CRUD & Authentification AWS) ⏳
+**Date:** 2 Avril 2026  
+**Phase actuelle:** Semaine 2 (CRUD & Authentification AWS) — Phase 1 ✅ TERMINÉE  
+**Prochaine phase:** Phase 2 (Cognito Auth + Frontend Integration) ⏳
 
 ---
 
-## 🎯 Avant de démarrer la Semaine 2
+## ✅ Semaine 2 Phase 1 — DynamoDB & Lambda CRUD (J8-J9)
 
-- [ ] Lire `DOCS/BOOTSTRAP_GUIDE_FR.md` (comprendre React Router et useState)
-- [ ] Exécuter `npm run dev` et vérifier que tout fonctionne
-- [ ] Exécuter `npm run lint && npm run type-check && npm run build`
-- [ ] Étudier AWS Lambda basics
-- [ ] Étudier DynamoDB single-table design
-- [ ] Étudier Cognito authentication flow
+- [x] Créer table DynamoDB (schema: Task, User)
+- [x] Implémenter 5 Lambda functions (CREATE, READ, UPDATE, DELETE, LIST)
+- [x] Configurer API Gateway HTTP API
+- [x] Ajouter permissions IAM
+- [x] TypeScript handlers pour chaque Lambda
+- [x] Shared TaskService pour opérations DynamoDB
+- [x] Documentation guide d'implémentation
+
+**Livrables:** ✅ DynamoDB table opérationnelle, Lambda CRUD implémentées, API Gateway routes configurées
+
+---
+
+## 📅 Semaine 2 Phase 2 — Authentication (J10-J11)
+
+**Objectifs:**
+- [ ] Créer Cognito User Pool
+- [ ] Configurer Cognito App Client
+- [ ] Ajouter JWT authorizer à API Gateway
+- [ ] Installer AWS Amplify Auth (ou amazon-cognito-identity-js)
+- [ ] Créer pages Login et Signup dans React
+
+**Livrables:**
+- Cognito setup complet
+- JWT token validation sur API GW
+- Auth endpoints fonctionnels
+- Frontend auth pages
 
 ---
 
