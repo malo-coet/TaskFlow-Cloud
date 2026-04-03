@@ -1,0 +1,21 @@
+{
+  "name": "taskflow-lambda-crud",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "CRUD Lambda functions for TaskFlow Cloud",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "cd .. && tsc",
+    "test": "vitest",
+    "test:watch": "vitest --watch"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.500.0",
+    "@aws-sdk/util-dynamodb": "^3.500.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.3",
+    "vitest": "^1.0.0"
+  }
+}

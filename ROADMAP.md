@@ -49,9 +49,9 @@ Semaine 4  →  Finition "recruiter-friendly" + Pitch
 
 ### J5–J7 · Lambda Hello World + API Gateway
 
-- [ ] Créer une Lambda Node.js `health-check` (`/health` → `{ status: "ok" }`)
-- [ ] Configurer un API Gateway HTTP API pointant sur cette Lambda
-- [ ] Appeler l'endpoint depuis le frontend et afficher la réponse
+- [x] Créer une Lambda Node.js `health-check` (`/health` → `{ status: "ok" }`)
+- [x] Configurer un API Gateway HTTP API pointant sur cette Lambda
+- [x] Appeler l'endpoint depuis le frontend et afficher la réponse
 - [ ] Définir le schéma de la table DynamoDB (voir `docs/dynamodb-schema.md`)
 - [ ] Provisionner manuellement les ressources AWS (avant IaC)
 
