@@ -1,5 +1,74 @@
 # 📝 CHANGELOG - TaskFlow Cloud Project
 
+## [v0.3.0] - 2026-04-03 - Cognito JWT Authentication
+
+### 🎯 Objectifs de fin de phase (J10-J11)
+✅ Cognito User Pool créé avec Terraform
+✅ JWT Authorizer configuré sur API Gateway
+✅ 4 Lambda CRUD routes protégées par JWT
+✅ Auth helper TypeScript pour extraction userId
+✅ Frontend Amplify auth integration
+✅ Guide de test complet
+✅ Guide AWS manual steps
+
+### 📦 Infrastructure Changes
+
+#### **Cognito** (`infra/cognito.tf`)
+- ✅ User Pool `taskflow-user-pool` avec password policy stricte
+- ✅ App Client pour frontend (password + refresh token flows)
+- ✅ User Pool Domain pour Hosted UI
+- ✅ Output: Pool ID, Client ID, Domain pour frontend config
+
+#### **API Gateway** (`infra/api_gateway_v2.tf`)
+- ✅ JWT Authorizer via Cognito
+- ✅ Toutes routes CRUD protégées (`authorization_type: JWT`)
+- ✅ Route `/health` publique (pas d'auth)
+- ✅ CORS configuré (à restreindre en prod)
+- ✅ CloudWatch logs intégrés
+
+#### **Lambda Helper** (`lambda/shared/authHelper.ts`)
+- ✅ `extractUserIdFromJWT()` - Récupère sub claim du JWT
+- ✅ `getEmailFromJWT()` - Récupère email du JWT
+- ✅ `getJWTPayload()` - Payload JWT complet
+
+### 📦 Frontend Changes
+
+#### **Auth Library** (`taskflow-frontend/src/lib/auth.ts`)
+- ✅ AWS Amplify Auth integration
+- ✅ `signUp()` - Inscription
+- ✅ `signIn()` - Connexion
+- ✅ `getJWTToken()` - JWT pour API calls
+- ✅ `getCurrentUser()` - Utilisateur actuel
+- ✅ Password reset functions
+
+#### **Configuration**
+- ✅ `.env.example` mise à jour avec Cognito vars
+- ✅ VITE_COGNITO_USER_POOL_ID
+- ✅ VITE_COGNITO_CLIENT_ID
+- ✅ VITE_API_URL
+
+### 📋 Documentation
+
+- ✅ **TESTING_GUIDE.md** - Étapes de test complet
+  - Get JWT token (CLI + Hosted UI)
+  - Test chaque endpoint avec JWT
+  - Debug avec CloudWatch logs
+  - Frontend integration hints
+
+- ✅ **AWS_MANUAL_STEPS.md** - Configuration AWS step-by-step
+  - Create User Pool manuellement
+  - Set up App Client
+  - Create test user
+  - Configure callbacks
+  - Get JWT token
+  - Verify permissions
+
+### ⚠️ Breaking Changes
+- ❌ Toutes routes CRUD now require JWT (`Authorization: Bearer <token>`)
+- ❌ Route `/health` reste publique (pour monitoring)
+
+---
+
 ## [v0.2.0] - 2026-04-02 - DynamoDB & Lambda CRUD Implementation
 
 ### 🎯 Objectifs de fin de phase (J8-J9)
