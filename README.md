@@ -402,7 +402,6 @@ Le projet est conçu pour résider intégralement dans le **AWS Free Tier** pour
 
 Ce projet intègre l'IA comme levier de productivité :
 - **GitHub Copilot** : Génération de boilerplate, types TypeScript, handlers Lambda, tests.
-- **ChatGPT** : Aide à la conception d'architecture, résolution de bugs, documentation.
 
 *Note : Chaque ligne de code générée a été revue, testée et validée manuellement.*
 

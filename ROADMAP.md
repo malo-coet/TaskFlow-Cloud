@@ -1,7 +1,5 @@
 # 🗺️ Roadmap TaskFlow Cloud — 30 jours
 
-> **Objectif :** Livrer une application de gestion de tâches serverless, production-ready, recruiter-friendly en 30 jours.
->
 > Suivi : chaque item correspond à une **GitHub Issue** avec son label de semaine et sa catégorie.  
 > Script de création automatique des issues → [`scripts/create-issues.sh`](scripts/create-issues.sh)
 
@@ -27,7 +25,7 @@ Semaine 4  →  Finition "recruiter-friendly" + Pitch
 - [x] Créer le compte AWS et activer MFA
 - [x] Installer et configurer AWS CLI (`aws configure`)
 - [x] Installer Terraform (ou AWS SAM CLI)
-- [x] Vérifier que le repo GitHub est créé et GitHub Copilot activé
+- [x] Vérifier que le repo GitHub est créé.
 - [x] Créer les labels et milestones GitHub via `scripts/create-issues.sh`
 
 > **Outils suggérés :**
@@ -82,7 +80,7 @@ Semaine 4  →  Finition "recruiter-friendly" + Pitch
 
 ### J10–J11 · Cognito + JWT sur API Gateway
 
-- [ ] Créer un Cognito User Pool (signup/login par email)
+- [x] Créer un Cognito User Pool (signup/login par email)
 - [ ] Configurer un App Client Cognito pour le frontend
 - [ ] Ajouter un Authorizer JWT Cognito sur API Gateway (toutes routes sauf `/health`)
 - [ ] Intégrer AWS Amplify Auth ou `amazon-cognito-identity-js` dans le frontend
@@ -119,7 +117,6 @@ Semaine 4  →  Finition "recruiter-friendly" + Pitch
   - [ ] Table DynamoDB
   - [ ] Cognito User Pool + App Client
 - [ ] Stocker le state Terraform dans un S3 bucket dédié (ou utiliser Terraform Cloud)
-- [ ] Utiliser Copilot pour générer les blocs Terraform/SAM, puis relire attentivement
 
 > **Outils suggérés :**
 > - [Terraform AWS Provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
