@@ -1,13 +1,211 @@
-# TaskFlow Cloud — Gestionnaire de Tâches Serverless
+# TaskFlow Cloud — Serverless Task Manager ☁️
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Node.js 20](https://img.shields.io/badge/Node.js-20.x-green.svg)](https://nodejs.org/)
+**Status:** v0.3.0 - JWT Auth ✅ | Phase 2/4 | [Next Steps](#-next-phase)
 
-TaskFlow Cloud est une application de gestion de tâches multi-utilisateurs haute performance, bâtie sur une architecture 100% Serverless AWS.
+---
 
-> **📌 [Documentation Index](INDEX.md)** — Find what you need  
-> **🚀 [Deployment Guide](SETUP.md)** — Deploy to AWS  
-> **🗺️ [30-day Roadmap](ROADMAP.md)** — Project timeline  
+## 📖 Documentation (Start Here!)
+
+Pick your path:
+
+| I want to... | Read this |
+|-------------|-----------|
+| **Deploy to AWS** | [AWS Manual Steps](AWS_MANUAL_STEPS.md) + [Deployment Guide](DEPLOYMENT_GUIDE.md) |
+| **Test API endpoints** | [Testing Guide](TESTING_GUIDE.md) (with curl examples) |
+| **Understand changes** | [CHANGELOG](CHANGELOG.md) (v0.3.0 = JWT Auth) |
+| **See the 30-day plan** | [Roadmap](ROADMAP.md) |
+
+---
+
+## 🚀 Quick Start (5 min)
+
+### 1. Deploy with Terraform
+```bash
+cd infra/
+terraform init
+terraform plan -out=tfplan
+terraform apply tfplan
+
+# Save these outputs:
+# - api_endpoint
+# - cognito_user_pool_id
+# - cognito_client_id
+```
+
+### 2. Get JWT Token
+```bash
+JWT=$(aws cognito-idp admin-initiate-auth \
+  --user-pool-id <USER_POOL_ID> \
+  --client-id <CLIENT_ID> \
+  --auth-flow ADMIN_USER_PASSWORD_AUTH \
+  --auth-parameters USERNAME=testuser@example.com,PASSWORD=TestPassword123! \
+  --query 'AuthenticationResult.IdToken' --output text)
+
+echo $JWT  # Save this for API calls
+```
+
+### 3. Create a Task
+```bash
+curl -X POST https://<API_ID>.execute-api.us-east-1.amazonaws.com/tasks \
+  -H "Authorization: Bearer $JWT" \
+  -H "Content-Type: application/json" \
+  -d '{"title": "Build TaskFlow", "dueDate": "2026-04-10"}'
+```
+
+**See [TESTING_GUIDE.md](TESTING_GUIDE.md) for all endpoints & debugging**
+
+---
+
+## ⚙️ Architecture
+
+```
+Frontend (React)          Backend (Lambda)        Data (DynamoDB)
+├─ React Router           ├─ POST /tasks          └─ Tasks table
+├─ Cognito Auth           ├─ GET /tasks           (PK: userId, SK: taskId)
+└─ API calls              ├─ PUT /tasks/{id}
+   with JWT               ├─ DELETE /tasks/{id}
+                          └─ JWT auth check
+                                 ↑
+                          Cognito JWT Authorizer
+```
+
+---
+
+## 📊 Current Phase (v0.3.0 - J10-J11)
+
+✅ **Completed:**
+- Cognito User Pool (Terraform-managed)
+- JWT Authorizer on API Gateway
+- Lambda CRUD routes with JWT protection
+- Frontend Amplify auth library
+- Complete testing guide
+
+⏳ **Next (v0.4.0 - J12-J14):**
+- [ ] Login/Signup pages
+- [ ] Task CRUD UI
+- [ ] Error handling & loading states
+- [ ] Lambda unit tests
+
+---
+
+## 📁 Project Structure
+
+```
+infra/                      Backend Infrastructure (Terraform)
+├── cognito.tf             User Pool, App Client, Domain
+├── dynamodb.tf            Single-Table Design (USER#{userId}, TASK#{taskId})
+├── lambda.tf              CRUD functions + IAM role
+├── api_gateway_v2.tf      HTTP API v2 + JWT routes
+└── provider.tf            AWS config
+
+lambda/                     Lambda Functions (TypeScript)
+├── functions/
+│   ├── createTask.ts      POST /tasks
+│   ├── listTasks.ts       GET /tasks
+│   ├── updateTask.ts      PUT /tasks/{taskId}
+│   └── deleteTask.ts      DELETE /tasks/{taskId}
+├── shared/
+│   ├── taskService.ts     DynamoDB operations
+│   ├── authHelper.ts      JWT → userId extraction
+│   └── types.ts           TypeScript interfaces
+└── dist/                  Compiled + .zip files
+
+taskflow-frontend/          React SPA (Vite)
+├── src/
+│   ├── lib/
+│   │   ├── api.ts         HTTP client with JWT
+│   │   └── auth.ts        Cognito Amplify
+│   ├── pages/
+│   │   ├── HomePage.tsx
+│   │   └── LoginPage.tsx  (next)
+│   └── App.tsx
+└── .env.example           Cognito credentials template
+```
+
+---
+
+## 🔧 Prerequisites
+
+```bash
+# Check versions
+node --version          # v18+
+aws --version          # v2+
+terraform --version    # v1.5+
+```
+
+---
+
+## 📋 Deployment Checklist
+
+- [ ] AWS account configured: `aws sts get-caller-identity`
+- [ ] Cognito User Pool created (manual or Terraform)
+- [ ] Test user created
+- [ ] App Client configured with callbacks
+- [ ] Lambda functions built: `npm run build` (in lambda/)
+- [ ] Terraform applied: `terraform apply tfplan`
+- [ ] JWT token obtained & tested
+- [ ] API endpoints respond with `Authorization` header
+
+---
+
+## 🧪 Testing
+
+**All test commands in [TESTING_GUIDE.md](TESTING_GUIDE.md):**
+
+1. Health check (public, no auth)
+   ```bash
+   curl https://<API>/health
+   ```
+
+2. Create task (with JWT)
+   ```bash
+   curl -X POST https://<API>/tasks \
+     -H "Authorization: Bearer $JWT" \
+     -d '{...}'
+   ```
+
+3. List, update, delete (same JWT pattern)
+
+**Debug with:** `aws logs tail /aws/lambda/taskflow-* --follow`
+
+---
+
+## 🔐 Security Notes
+
+- ✅ All CRUD routes require JWT (`/health` is public)
+- ✅ Lambda has least-privilege IAM (DynamoDB only)
+- ✅ CORS restricted (update for production)
+- ⚠️ Token expiry: 1 hour (configure in cognito.tf)
+
+---
+
+## 🐛 Common Issues
+
+| Problem | Solution |
+|---------|----------|
+| 401 Unauthorized | JWT expired? Re-run step 2 above |
+| CORS error | Add frontend URL to Cognito callbacks |
+| Lambda timeout | Check DynamoDB provisioning |
+| No test user | Run AWS manual steps: [AWS_MANUAL_STEPS.md](AWS_MANUAL_STEPS.md) |
+
+---
+
+## 📞 Help
+
+1. **Check the guide**: [TESTING_GUIDE.md](TESTING_GUIDE.md) or [AWS_MANUAL_STEPS.md](AWS_MANUAL_STEPS.md)
+2. **View logs**: `aws logs tail /aws/apigateway/taskflow-api --follow`
+3. **Verify config**: `terraform output` (in infra/)
+
+---
+
+## 🔗 Phase Status
+
+| Phase | Dates | Status | Docs |
+|-------|-------|--------|------|
+| **1** | J1-J7 | ✅ Bootstrap | [v0.1.0](CHANGELOG.md) |
+| **2** | J8-J11 | ✅ CRUD + Auth | [v0.2-0.3](CHANGELOG.md) |
+| **3** | J12-J14 | 🔄 UI & Tests | See [Roadmap](ROADMAP.md) |
+| **4** | J15-J30 | 📅 Prod Ready | See [Roadmap](ROADMAP.md) |
 > **📝 [Changelog](CHANGELOG.md)** — What changed
 
 ---
@@ -299,6 +497,4 @@ npm run lint
 ## 📄 License
 
 MIT License - See [LICENSE](LICENSE) for details
-
-**Made with ❤️ and Copilot**
 
