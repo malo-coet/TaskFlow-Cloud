@@ -1,0 +1,20 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": [
+    "./shared/taskService.ts",
+    "./shared/authHelper.ts",
+    "./functions/createTask.ts",
+    "./functions/listTasks.ts",
+    "./functions/updateTask.ts",
+    "./functions/deleteTask.ts"
+  ],
+  "entryPointStrategy": "expand",
+  "out": "../docs/reference/api",
+  "readme": "none",
+  "name": "TaskFlow Lambda API Reference",
+  "excludePrivate": true,
+  "excludeInternal": true,
+  "sort": ["source-order"],
+  "tsconfig": "./tsconfig.json"
+}
+

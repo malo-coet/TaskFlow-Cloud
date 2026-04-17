@@ -17,8 +17,8 @@
 - ✅ Functions: signUp, signIn, getJWTToken, getCurrentUser, etc.
 
 ### Documentation
-- ✅ **TESTING_GUIDE.md** - Step-by-step API testing with JWT
-- ✅ **AWS_MANUAL_STEPS.md** - AWS console setup (Cognito, test user)
+- ✅ `docs/archive/TESTING_GUIDE.md` - Step-by-step API testing with JWT
+- ✅ `docs/archive/AWS_MANUAL_STEPS.md` - AWS console setup (Cognito, test user)
 - ✅ **README.md** - Updated with v0.3.0 info & quick start
 - ✅ **CHANGELOG.md** - v0.3.0 entry added
 
@@ -50,7 +50,7 @@ terraform apply tfplan
 ```
 
 ### Option 2: Manual Setup First
-See `AWS_MANUAL_STEPS.md` for step-by-step AWS console setup
+See `docs/archive/AWS_MANUAL_STEPS.md` for step-by-step AWS console setup
 Then run Terraform to automate
 
 ---
@@ -75,7 +75,7 @@ curl -X POST https://<API>/tasks \
   -H "Content-Type: application/json" \
   -d '{"title": "Test", "dueDate": "2026-04-10"}'
 
-# See TESTING_GUIDE.md for all endpoints
+# See docs/archive/TESTING_GUIDE.md for all endpoints
 ```
 
 ---
@@ -94,8 +94,8 @@ git commit -m "feat(auth): add Cognito JWT authentication + API protection
 - [infra] All CRUD routes now protected by JWT (/health remains public)
 - [lambda] New authHelper.ts: Extract userId + email from JWT
 - [frontend] New auth.ts: Amplify integration (signIn, signUp, getJWTToken)
-- [docs] TESTING_GUIDE.md: Complete API testing instructions
-- [docs] AWS_MANUAL_STEPS.md: Step-by-step Cognito setup
+- [docs] docs/archive/TESTING_GUIDE.md: Complete API testing instructions
+- [docs] docs/archive/AWS_MANUAL_STEPS.md: Step-by-step Cognito setup
 - [docs] Updated README.md + CHANGELOG.md for v0.3.0
 
 Breaking: All CRUD routes now require Authorization header with JWT token.
@@ -114,8 +114,8 @@ git push origin dev
 - `infra/api_gateway_v2.tf`
 - `lambda/shared/authHelper.ts`
 - `taskflow-frontend/src/lib/auth.ts`
-- `TESTING_GUIDE.md`
-- `AWS_MANUAL_STEPS.md`
+- `docs/archive/TESTING_GUIDE.md`
+- `docs/archive/AWS_MANUAL_STEPS.md`
 
 **Updated:**
 - `README.md` - v0.3.0 info
@@ -134,7 +134,7 @@ git push origin dev
 - [ ] Terraform files validate: `terraform fmt && terraform validate`
 - [ ] No hardcoded secrets in files
 - [ ] All guides reference correct variable names
-- [ ] TESTING_GUIDE.md examples use placeholders (<USER_POOL_ID>, etc.)
+- [ ] docs/archive/TESTING_GUIDE.md examples use placeholders (<USER_POOL_ID>, etc.)
 - [ ] authHelper.ts compiles: `tsc --noEmit`
 - [ ] auth.ts uses correct Amplify imports
 

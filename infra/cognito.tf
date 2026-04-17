@@ -98,12 +98,12 @@ output "cognito_client_id" {
 }
 
 output "cognito_domain" {
-  value       = aws_cognito_user_pool_domain.taskflow.domain_name
+  value       = aws_cognito_user_pool_domain.taskflow.domain
   description = "Cognito Domain for Hosted UI"
 }
 
 output "cognito_region" {
-  value       = var.aws_region
+  value       = data.aws_region.current.name
   description = "AWS Region for Cognito"
 }
 

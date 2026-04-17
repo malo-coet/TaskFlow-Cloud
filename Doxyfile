@@ -1,0 +1,20 @@
+PROJECT_NAME           = "TaskFlow"
+PROJECT_BRIEF          = "Serverless Task Manager on AWS"
+OUTPUT_DIRECTORY       = docs/reference/doxygen
+CREATE_SUBDIRS         = NO
+OUTPUT_LANGUAGE        = English
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+RECURSIVE              = YES
+MARKDOWN_SUPPORT       = YES
+JAVADOC_AUTOBRIEF      = YES
+OPTIMIZE_OUTPUT_JAVA   = YES
+EXTENSION_MAPPING      = ts=JavaScript
+FILE_PATTERNS          = *.md *.ts *.tf
+INPUT                  = docs/DOXYGEN.md docs/README.md docs/runbook docs/reference lambda/shared lambda/functions infra
+EXCLUDE_PATTERNS       = */node_modules/* */dist/* */.terraform/* */archive/* *.d.ts README.md
+QUIET                  = YES
+WARN_IF_UNDOCUMENTED   = NO
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = NO
+

@@ -4,12 +4,12 @@
 resource "aws_apigatewayv2_authorizer" "cognito_jwt" {
   api_id          = aws_apigatewayv2_api.taskflow_api.id
   authorizer_type = "JWT"
-  identity_source = "$request.header.Authorization"
+  identity_sources = ["$request.header.Authorization"]
   name            = "cognito-jwt-authorizer"
 
   jwt_configuration {
     audience = [aws_cognito_user_pool_client.taskflow_web.id]
-    issuer   = "https://cognito-idp.${var.aws_region}.amazonaws.com/${aws_cognito_user_pool.taskflow.id}"
+    issuer   = "https://cognito-idp.${data.aws_region.current.name}.amazonaws.com/${aws_cognito_user_pool.taskflow.id}"
   }
 }
 
@@ -19,7 +19,7 @@ resource "aws_apigatewayv2_integration" "create_task" {
   integration_type   = "AWS_PROXY"
   integration_method = "POST"
   payload_format_version = "2.0"
-  target             = aws_lambda_function.create_task.arn
+  integration_uri    = aws_lambda_function.create_task.invoke_arn
 }
 
 resource "aws_apigatewayv2_integration" "list_tasks" {
@@ -27,7 +27,7 @@ resource "aws_apigatewayv2_integration" "list_tasks" {
   integration_type   = "AWS_PROXY"
   integration_method = "POST"
   payload_format_version = "2.0"
-  target             = aws_lambda_function.list_tasks.arn
+  integration_uri    = aws_lambda_function.list_tasks.invoke_arn
 }
 
 resource "aws_apigatewayv2_integration" "update_task" {
@@ -35,7 +35,7 @@ resource "aws_apigatewayv2_integration" "update_task" {
   integration_type   = "AWS_PROXY"
   integration_method = "POST"
   payload_format_version = "2.0"
-  target             = aws_lambda_function.update_task.arn
+  integration_uri    = aws_lambda_function.update_task.invoke_arn
 }
 
 resource "aws_apigatewayv2_integration" "delete_task" {
@@ -43,7 +43,7 @@ resource "aws_apigatewayv2_integration" "delete_task" {
   integration_type   = "AWS_PROXY"
   integration_method = "POST"
   payload_format_version = "2.0"
-  target             = aws_lambda_function.delete_task.arn
+  integration_uri    = aws_lambda_function.delete_task.invoke_arn
 }
 
 resource "aws_apigatewayv2_integration" "health_check" {
@@ -51,7 +51,7 @@ resource "aws_apigatewayv2_integration" "health_check" {
   integration_type   = "AWS_PROXY"
   integration_method = "POST"
   payload_format_version = "2.0"
-  target             = aws_lambda_function.health_check.arn
+  integration_uri    = aws_lambda_function.health_check.invoke_arn
 }
 
 # Routes with JWT Authorization
@@ -105,10 +105,8 @@ resource "aws_apigatewayv2_stage" "dev" {
   auto_deploy = true
 
   default_route_settings {
-    throttle_settings {
-      burst_limit = 5000
-      rate_limit  = 2000
-    }
+    throttling_burst_limit = 5000
+    throttling_rate_limit  = 2000
   }
 
   access_log_settings {

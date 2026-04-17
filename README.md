@@ -6,14 +6,16 @@
 
 ## 📖 Documentation (Start Here!)
 
-Pick your path:
+Documentation centralisee:
 
 | I want to... | Read this |
 |-------------|-----------|
-| **Deploy to AWS** | [AWS Manual Steps](AWS_MANUAL_STEPS.md) + [Deployment Guide](DEPLOYMENT_GUIDE.md) |
-| **Test API endpoints** | [Testing Guide](TESTING_GUIDE.md) (with curl examples) |
-| **Understand changes** | [CHANGELOG](CHANGELOG.md) (v0.3.0 = JWT Auth) |
-| **See the 30-day plan** | [Roadmap](ROADMAP.md) |
+| **Start from one place** | [Docs Hub](docs/README.md) |
+| **Deploy to AWS** | [AWS Options](docs/runbook/AWS_OPTIONS.md) |
+| **Run quick API tests** | [Commands Runbook](docs/runbook/COMMANDS.md) |
+| **Generate all technical docs** | `npm run docs:all` |
+| **Generate technical API docs** | [Doxygen/TypeDoc Guide](docs/DOXYGEN.md) |
+| **Understand changes** | [CHANGELOG](CHANGELOG.md) |
 
 ---
 
@@ -186,13 +188,13 @@ terraform --version    # v1.5+
 | 401 Unauthorized | JWT expired? Re-run step 2 above |
 | CORS error | Add frontend URL to Cognito callbacks |
 | Lambda timeout | Check DynamoDB provisioning |
-| No test user | Run AWS manual steps: [AWS_MANUAL_STEPS.md](AWS_MANUAL_STEPS.md) |
+| No test user | Run AWS manual steps: [docs/archive/AWS_MANUAL_STEPS.md](docs/archive/AWS_MANUAL_STEPS.md) |
 
 ---
 
 ## 📞 Help
 
-1. **Check the guide**: [TESTING_GUIDE.md](TESTING_GUIDE.md) or [AWS_MANUAL_STEPS.md](AWS_MANUAL_STEPS.md)
+1. **Check the guide**: [docs/runbook/COMMANDS.md](docs/runbook/COMMANDS.md) or [docs/archive/AWS_MANUAL_STEPS.md](docs/archive/AWS_MANUAL_STEPS.md)
 2. **View logs**: `aws logs tail /aws/apigateway/taskflow-api --follow`
 3. **Verify config**: `terraform output` (in infra/)
 
@@ -398,14 +400,6 @@ Le projet est conçu pour résider intégralement dans le **AWS Free Tier** pour
 
 ---
 
-## 🤖 Utilisation de l'IA (Copilot & ChatGPT)
-
-Ce projet intègre l'IA comme levier de productivité :
-- **GitHub Copilot** : Génération de boilerplate, types TypeScript, handlers Lambda, tests.
-
-*Note : Chaque ligne de code générée a été revue, testée et validée manuellement.*
-
----
 
 ## 🔐 Sécurité
 
@@ -469,6 +463,11 @@ TaskFlow/
 ---
 
 ## 🧪 Tests
+
+### Build global depuis la racine
+```bash
+npm run build
+```
 
 ### Lambda CRUD Functions
 ```bash

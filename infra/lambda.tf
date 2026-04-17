@@ -60,7 +60,7 @@ resource "aws_lambda_function" "create_task" {
   filename      = "../lambda/functions/dist/createTask.zip"
   function_name = "taskflow-create-task"
   role          = aws_iam_role.lambda_role.arn
-  handler       = "createTask.handler"
+  handler       = "functions/createTask.handler"
   runtime       = "nodejs20.x"
   timeout       = 30
 
@@ -80,7 +80,7 @@ resource "aws_lambda_function" "list_tasks" {
   filename      = "../lambda/functions/dist/listTasks.zip"
   function_name = "taskflow-list-tasks"
   role          = aws_iam_role.lambda_role.arn
-  handler       = "listTasks.handler"
+  handler       = "functions/listTasks.handler"
   runtime       = "nodejs20.x"
   timeout       = 30
 
@@ -100,7 +100,7 @@ resource "aws_lambda_function" "update_task" {
   filename      = "../lambda/functions/dist/updateTask.zip"
   function_name = "taskflow-update-task"
   role          = aws_iam_role.lambda_role.arn
-  handler       = "updateTask.handler"
+  handler       = "functions/updateTask.handler"
   runtime       = "nodejs20.x"
   timeout       = 30
 
@@ -120,7 +120,7 @@ resource "aws_lambda_function" "delete_task" {
   filename      = "../lambda/functions/dist/deleteTask.zip"
   function_name = "taskflow-delete-task"
   role          = aws_iam_role.lambda_role.arn
-  handler       = "deleteTask.handler"
+  handler       = "functions/deleteTask.handler"
   runtime       = "nodejs20.x"
   timeout       = 30
 
@@ -133,6 +133,20 @@ resource "aws_lambda_function" "delete_task" {
   source_code_hash = filebase64sha256("../lambda/functions/dist/deleteTask.zip")
 
   depends_on = [aws_iam_role_policy.lambda_dynamodb_policy]
+}
+
+# Lambda function - health check
+resource "aws_lambda_function" "health_check" {
+  filename      = "../lambda/health-check/function.zip"
+  function_name = "taskflow-health-check"
+  role          = aws_iam_role.lambda_role.arn
+  handler       = "handler.handler"
+  runtime       = "nodejs20.x"
+  timeout       = 10
+
+  source_code_hash = filebase64sha256("../lambda/health-check/function.zip")
+
+  depends_on = [aws_iam_role_policy_attachment.lambda_basic_execution]
 }
 
 # Outputs
@@ -150,5 +164,9 @@ output "update_task_function_arn" {
 
 output "delete_task_function_arn" {
   value = aws_lambda_function.delete_task.arn
+}
+
+output "health_check_function_arn" {
+  value = aws_lambda_function.health_check.arn
 }
 

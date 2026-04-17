@@ -147,6 +147,7 @@ export async function listTasks(userId: string): Promise<Task[]> {
 export async function updateTask(input: UpdateTaskInput): Promise<Task> {
   const now = new Date().toISOString();
   const updates: string[] = [];
+  const expressionAttributeNames: Record<string, string> = {};
   const expressionAttributeValues: Record<string, unknown> = {
     ":updatedAt": now,
   };
@@ -160,7 +161,9 @@ export async function updateTask(input: UpdateTaskInput): Promise<Task> {
     expressionAttributeValues[":description"] = input.description;
   }
   if (input.status !== undefined) {
-    updates.push("status = :status");
+    // `status` is a DynamoDB reserved word, so we alias it.
+    updates.push("#status = :status");
+    expressionAttributeNames["#status"] = "status";
     expressionAttributeValues[":status"] = input.status;
   }
   if (input.dueDate !== undefined) {
@@ -181,6 +184,9 @@ export async function updateTask(input: UpdateTaskInput): Promise<Task> {
       SK: `TASK#${input.taskId}`,
     }),
     UpdateExpression: `SET ${updates.join(", ")}`,
+    ...(Object.keys(expressionAttributeNames).length > 0
+      ? { ExpressionAttributeNames: expressionAttributeNames }
+      : {}),
     ExpressionAttributeValues: marshall(expressionAttributeValues),
     ReturnValues: "ALL_NEW" as const,
   };
