@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['ui_0',['Option B: Hosted UI',['../md_docs_2archive_2_a_w_s___m_a_n_u_a_l___s_t_e_p_s.html#autotoc_md87',1,'']]],
+  ['ui_20easiest_1',['Option A: Use Cognito Hosted UI (easiest)',['../md_docs_2archive_2_t_e_s_t_i_n_g___g_u_i_d_e.html#autotoc_md161',1,'']]],
+  ['un_20endpoint_20crud_20protégé_2',['2. &lt;b&gt;Tester un endpoint CRUD protégé&lt;/b&gt;',['../md_docs_2_c_o_g_n_i_t_o___j_w_t___s_e_t_u_p___j10___j11.html#autotoc_md210',1,'']]],
+  ['un_20jwt_20si_20cognito_20actif_3',['2) Recuperer un JWT (si Cognito actif)',['../md_docs_2runbook_2_c_o_m_m_a_n_d_s.html#autotoc_md293',1,'']]],
+  ['un_20token_20cognito_4',['1. &lt;b&gt;Obtenir un token Cognito&lt;/b&gt;',['../md_docs_2_c_o_g_n_i_t_o___j_w_t___s_e_t_u_p___j10___j11.html#autotoc_md209',1,'']]],
+  ['unauthorized_20access_5',['5️⃣ Test Unauthorized Access',['../md_docs_2archive_2_t_e_s_t_i_n_g___g_u_i_d_e.html#autotoc_md175',1,'']]],
+  ['unauthorized_20error_6',['&quot;Unauthorized&quot; error',['../dir_4b73342a493c3ec8f518edda193e909f.html#autotoc_md323',1,'']]],
+  ['une_20cognito_20app_20client_7',['2. &lt;b&gt;Créer une Cognito App Client&lt;/b&gt;',['../md_docs_2_c_o_g_n_i_t_o___j_w_t___s_e_t_u_p___j10___j11.html#autotoc_md202',1,'']]],
+  ['une_20tâche_8',['une tâche',['../md_docs_2_i_m_p_l_e_m_e_n_t_a_t_i_o_n___g_u_i_d_e___j8___j9.html#autotoc_md262',1,'Exemple : Créer une tâche'],['../md_docs_2_i_m_p_l_e_m_e_n_t_a_t_i_o_n___g_u_i_d_e___j8___j9.html#autotoc_md264',1,'Exemple : Mettre à jour une tâche'],['../md_docs_2_i_m_p_l_e_m_e_n_t_a_t_i_o_n___g_u_i_d_e___j8___j9.html#autotoc_md265',1,'Exemple : Supprimer une tâche']]],
+  ['update_20task_9',['PUT /tasks/{taskId} — Update Task',['../dir_4b73342a493c3ec8f518edda193e909f.html#autotoc_md309',1,'']]],
+  ['update_20task_20with_20jwt_10',['Update Task (with JWT)',['../md_docs_2archive_2_t_e_s_t_i_n_g___g_u_i_d_e.html#autotoc_md171',1,'']]],
+  ['updatetask_20ts_20—_20put_20tasks_20taskid_11',['&lt;b&gt;updateTask.ts&lt;/b&gt; — PUT /tasks/{taskId}',['../md_docs_2_i_m_p_l_e_m_e_n_t_a_t_i_o_n___g_u_i_d_e___j8___j9.html#autotoc_md245',1,'']]],
+  ['use_20aws_20cli_20directly_12',['Option B: Use AWS CLI directly',['../md_docs_2archive_2_t_e_s_t_i_n_g___g_u_i_d_e.html#autotoc_md162',1,'']]],
+  ['use_20cognito_20hosted_20ui_20easiest_13',['Option A: Use Cognito Hosted UI (easiest)',['../md_docs_2archive_2_t_e_s_t_i_n_g___g_u_i_d_e.html#autotoc_md161',1,'']]],
+  ['use_20in_20login_20component_14',['Use in Login Component',['../md_docs_2archive_2_t_e_s_t_i_n_g___g_u_i_d_e.html#autotoc_md186',1,'']]],
+  ['user_15',['Step 4: Create Test User',['../md_docs_2archive_2_a_w_s___m_a_n_u_a_l___s_t_e_p_s.html#autotoc_md79',1,'']]],
+  ['user_20pool_16',['Check Cognito User Pool',['../md_docs_2archive_2_t_e_s_t_i_n_g___g_u_i_d_e.html#autotoc_md181',1,'']]],
+  ['user_20pool_20aws_20console_17',['User Pool AWS Console',['../md_docs_2_c_o_g_n_i_t_o___j_w_t___s_e_t_u_p___j10___j11.html#autotoc_md201',1,'1. &lt;b&gt;Créer le Cognito User Pool&lt;/b&gt; (AWS Console)'],['../md_docs_2archive_2_a_w_s___m_a_n_u_a_l___s_t_e_p_s.html#autotoc_md73',1,'Step 1: Create Cognito User Pool (AWS Console)']]],
+  ['user_20pool_20manually_20optional_20for_20testing_18',['Create Cognito User Pool manually (optional for testing)',['../md_docs_2archive_2_t_e_s_t_i_n_g___g_u_i_d_e.html#autotoc_md156',1,'']]],
+  ['user_20pool_20not_20found_19',['&quot;Cognito User Pool not found&quot;',['../md_docs_2archive_2_t_e_s_t_i_n_g___g_u_i_d_e.html#autotoc_md191',1,'']]],
+  ['utiles_20',['0) Variables utiles',['../md_docs_2runbook_2_c_o_m_m_a_n_d_s.html#autotoc_md291',1,'']]],
+  ['utiliser_20en_20priorite_21',['A utiliser en priorite',['../dir_764977a981e0196af530aae41d6254b7.html#autotoc_md151',1,'']]]
+];

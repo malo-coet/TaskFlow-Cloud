@@ -92,7 +92,7 @@ export async function getCurrentUser() {
 export async function getJWTToken(): Promise<string | null> {
   try {
     const session = await Auth.currentSession();
-    return session.idToken.jwtToken;
+    return session.getIdToken().getJwtToken();
   } catch (error) {
     console.error('Failed to get JWT:', error);
     return null;
@@ -105,7 +105,7 @@ export async function getJWTToken(): Promise<string | null> {
 export async function refreshToken() {
   try {
     const session = await Auth.currentSession();
-    return session.idToken.jwtToken;
+    return session.getIdToken().getJwtToken();
   } catch (error) {
     console.error('Token refresh error:', error);
     throw error;

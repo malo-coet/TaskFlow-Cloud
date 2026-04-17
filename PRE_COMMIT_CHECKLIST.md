@@ -34,15 +34,15 @@ Run these checks before `git add .`
   ls -la infra/api_gateway_v2.tf
   ls -la lambda/shared/authHelper.ts
   ls -la taskflow-frontend/src/lib/auth.ts
-  ls -la TESTING_GUIDE.md
-  ls -la AWS_MANUAL_STEPS.md
+  ls -la docs/archive/TESTING_GUIDE.md
+  ls -la docs/archive/AWS_MANUAL_STEPS.md
   ```
 
 - [ ] Documentation files are readable
   ```bash
-  head -5 TESTING_GUIDE.md
-  head -5 AWS_MANUAL_STEPS.md
-  head -5 DOCS.md
+  head -5 docs/archive/TESTING_GUIDE.md
+  head -5 docs/archive/AWS_MANUAL_STEPS.md
+  head -5 docs/archive/DOCS.md
   ```
 
 - [ ] No .env files committed (only .env.example)
@@ -71,12 +71,12 @@ Run these checks before `git add .`
 
 - [ ] TESTING_GUIDE.md has JWT examples
   ```bash
-  grep -i "jwt\|bearer" TESTING_GUIDE.md && echo "✅ Found" || echo "❌ Missing"
+  grep -i "jwt\|bearer" docs/archive/TESTING_GUIDE.md && echo "✅ Found" || echo "❌ Missing"
   ```
 
 - [ ] AWS_MANUAL_STEPS.md has Cognito setup
   ```bash
-  grep -i "cognito\|user pool" AWS_MANUAL_STEPS.md && echo "✅ Found" || echo "❌ Missing"
+  grep -i "cognito\|user pool" docs/archive/AWS_MANUAL_STEPS.md && echo "✅ Found" || echo "❌ Missing"
   ```
 
 ---
@@ -118,8 +118,8 @@ git commit -m "feat(auth): Cognito JWT + API protection (v0.3.0 - J10-J11)
 - infra/api_gateway_v2.tf: HTTP API v2 with JWT Authorizer  
 - lambda/shared/authHelper.ts: JWT extraction
 - taskflow-frontend/src/lib/auth.ts: Amplify integration
-- TESTING_GUIDE.md: Complete test instructions
-- AWS_MANUAL_STEPS.md: Step-by-step setup
+- docs/archive/TESTING_GUIDE.md: Complete test instructions
+- docs/archive/AWS_MANUAL_STEPS.md: Step-by-step setup
 - Updated README.md + CHANGELOG.md
 
 All CRUD routes now require JWT token.

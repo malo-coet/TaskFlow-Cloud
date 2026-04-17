@@ -12,6 +12,9 @@ interface APIGatewayEvent {
   };
   requestContext: {
     authorizer: {
+      jwt?: {
+        claims?: Record<string, string>;
+      };
       claims: {
         sub: string; // Cognito userId
         email: string;
@@ -31,7 +34,8 @@ export const handler = async (event: APIGatewayEvent): Promise<APIGatewayRespons
     console.log("DeleteTask handler invoked:", event);
 
     // Extract userId from Cognito token
-    const userId = event.requestContext.authorizer.claims.sub;
+    const claims = event.requestContext.authorizer?.jwt?.claims ?? event.requestContext.authorizer?.claims;
+    const userId = claims?.sub;
 
     if (!userId) {
       return {

@@ -1,0 +1,14 @@
+{
+  "name": "taskflow",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build:frontend": "npm --prefix taskflow-frontend run build",
+    "build:lambda": "npm --prefix lambda run build",
+    "build": "npm run build:frontend && npm run build:lambda",
+    "docs:api": "npm --prefix lambda run docs:api",
+    "docs:api:watch": "npm --prefix lambda run docs:api:watch",
+    "docs:doxygen": "doxygen Doxyfile",
+    "docs:all": "npm run docs:api && npm run docs:doxygen"
+  }
+}
